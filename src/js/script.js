@@ -58,7 +58,7 @@
     initActions(){
       const thisBooksApp = this;
     
-      const booksContainer = document.querySelector(classes.booksList);
+      //const booksContainer = document.querySelector(classes.booksList);//
        
       //nasłuchiwacz uruchamiający dbclick i zatrzymujący domyślne zachowanie
       thisBooksApp.booksList.addEventListener('dblclick', function(event){
@@ -79,17 +79,17 @@
                 
       });
 
-      thisBooksApp.filterWrapper.addEventListener('click', function(event){
+      this.filterWrapper.addEventListener('click', function(event){
         event.preventDefault();
         const clickedForm = event.target;
         if((clickedForm.type === 'checkbox' && clickedForm.tagName === 'INPUT' && clickedForm.name === 'filter'){
           if (clickedForm.checked == true) {
             thisBooksApp.filters.push(clickedForm.value);
           } else {
-            thisBooksApp.filters.splice(thisBooksList.filters.indexOf(clickedForm.value), 1);
+            this.filterWrapper.filters.splice(thisBooksApp.filters.indexOf(clickedForm.value), 1);
           }
         }
-        thisBooksApp.filterBooks();
+        this.filterWrapper.filterBooks();
       });
 
       filterBooks() {
